@@ -1,7 +1,10 @@
 {
+  "title": "browserify-example",
   "dev": "dev",
   "dist": "www",
   "port": 3000,
   "host": "localhost",
-  "livereload": 35730
+  "livereload": 35730,
+  "version": "dev",
+  "materialCss": "../node_modules/angular-material/angular-material.min.css"
 }

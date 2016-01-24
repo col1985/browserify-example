@@ -108,6 +108,9 @@ module.exports = function (grunt) {
           remove: ['link', 'script'],
           append: [{
             selector: 'head',
+            html: '<link href="<%= app.materialCss %>" rel="stylesheet">'
+          }, {
+            selector: 'head',
             html: '<link href="bundle.css" rel="stylesheet">'
           }, {
             selector: 'body',
@@ -147,15 +150,15 @@ module.exports = function (grunt) {
   grunt.registerTask('default', ['browserify', 'less', 'watch']);
   grunt.registerTask('format', ['jshint']);
 
-  grunt.registerTask('develop', 'Starting dev watch server..', function (val) {
+  grunt.registerTask('develop', 'Starting dev watch server..', function () {
     grunt.config.set('connect.livereload.options.open', true);
 
     grunt.task.run([
       'connect:livereload',
       'browserify',
       'less',
-      'cssmin:dev',
       'dom_munger:dev',
+      'cssmin:dev',
       'watch'
     ]);
   });

@@ -1,0 +1,22 @@
+{
+  "name": "browserify-example-dev",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build-js": "browserify dev/main.js > www/bundle.js -d",
+    "watch-js": "watchify dev/main.js -o www/bundle.js -dv"
+  },
+  "author": "Colum Bennett",
+  "email": "col1985@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.4.9",
+    "angular-animate": "^1.4.9",
+    "angular-aria": "^1.4.9",
+    "angular-material": "^1.0.2",
+    "angular-ui-router": "^0.2.15",
+    "moment": "latest",
+    "lodash": "latest"
+  }
+}
