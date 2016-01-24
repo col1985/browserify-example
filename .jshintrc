@@ -28,8 +28,8 @@
 
      // Custom Globals
     "globals"       : {
+        "document": true,
         "node"      : false,
-        "mocha"     : true,
-        "$fh"       : false
+        "mocha"     : true
     }
 }

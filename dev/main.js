@@ -1,9 +1,15 @@
-var names = require('./lib/names.js'),
-  findSuperman = require('./lib/findSuperman.js');
+var names = require('./js/names.js'),
+  findSuperman = require('./js/findSuperman.js'),
+  findBatman = require('./js/findBatman.js');
 
 // invoke
 if (findSuperman(names())) {
+  console.log('We found Superman');
   document.write('We found Superman');
+} else if (findBatman(names())) {
+  console.log('We found Batman!');
+  document.write('We found Batman');
 } else {
-  document.write('No Superman...');
+  //console.log('no')
+  document.write('Nope...!!!');
 }

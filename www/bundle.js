@@ -1,5 +1,25 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 module.exports = function (values) {
+  var foundBatman = false,
+    _ = require('underscore'),
+    moment = require('moment');
+
+  var now = moment().format();
+
+  _.find(values, function (name) {
+    if (name === 'Bruce Wayne') {
+      foundBatman = true;
+      console.log(now, 'I am Batman!');
+    } else {
+      console.log(now, '... No superman!');
+    }
+  });
+
+  return foundBatman;
+};
+
+},{"moment":5,"underscore":6}],2:[function(require,module,exports){
+module.exports = function (values) {
   var foundSuperman = false,
     _ = require('underscore'),
     moment = require('moment');
@@ -20,41 +40,48 @@ module.exports = function (values) {
   return foundSuperman;
 };
 
-},{"moment":4,"underscore":5}],2:[function(require,module,exports){
+},{"moment":5,"underscore":6}],3:[function(require,module,exports){
 module.exports = function () {
-    return [
-        'Bruce Wayne',
-        'Wally West',
-        'John Jones',
-        'Kyle Rayner',
-        'Arthur Curry',
-        'Clark Kent',
-        'Barry Allen',
-        'Hal Jordan',
-        'Kara Kent',
-        'Diana Prince',
-        'Ray Palmer',
-        'Oliver Queen',
-        'Barry Allen',
-        'Hal Jordan',
-        'Kara Kent',
-        'Diana Prince',
-        'Ray Palmer',
-        'Oliver Queen'
-    ]
+  return [
+    'Bruce Wayne',
+    'Wally West',
+    'John Jones',
+    'Kyle Rayner',
+    'Arthur Curry',
+    'Clark Kent',
+    'Barry Allen',
+    'Hal Jordan',
+    'Kara Kent',
+    'Diana Prince',
+    'Ray Palmer',
+    'Oliver Queen',
+    'Barry Allen',
+    'Hal Jordan',
+    'Kara Kent',
+    'Diana Prince',
+    'Ray Palmer',
+    'Oliver Queen'
+  ];
 }
-},{}],3:[function(require,module,exports){
-var names = require('./lib/names.js'),
-  findSuperman = require('./lib/findSuperman.js');
+
+},{}],4:[function(require,module,exports){
+var names = require('./js/names.js'),
+  findSuperman = require('./js/findSuperman.js'),
+  findBatman = require('./js/findBatman.js');
 
 // invoke
 if (findSuperman(names())) {
+  console.log('We found Superman');
   document.write('We found Superman');
+} else if (findBatman(names())) {
+  console.log('We found Batman!');
+  document.write('We found Batman');
 } else {
-  document.write('No Superman...');
+  //console.log('no')
+  document.write('Nope...!!!');
 }
 
-},{"./lib/findSuperman.js":1,"./lib/names.js":2}],4:[function(require,module,exports){
+},{"./js/findBatman.js":1,"./js/findSuperman.js":2,"./js/names.js":3}],5:[function(require,module,exports){
 //! moment.js
 //! version : 2.11.1
 //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
@@ -3661,7 +3688,7 @@ if (findSuperman(names())) {
     return _moment;
 
 }));
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 //     Underscore.js 1.8.3
 //     http://underscorejs.org
 //     (c) 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -5211,4 +5238,4 @@ if (findSuperman(names())) {
   }
 }.call(this));
 
-},{}]},{},[3]);
+},{}]},{},[1,2,3,4]);

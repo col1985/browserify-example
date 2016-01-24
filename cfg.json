@@ -1,0 +1,6 @@
+{
+  "dev": "dev",
+  "dist": "www",
+  "port": 3000,
+  "host": "localhost"
+}
