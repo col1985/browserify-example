@@ -10,11 +10,11 @@
   "author": "Colum Bennett",
   "license": "ISC",
   "dependencies": {
-    "moment": "^2.11.1",
-    "underscore": "^1.8.3"
+    "moment": "2.11.1",
+    "underscore": "1.8.3"
   },
   "devDependencies": {
     "browserify": "latest",
-    "watchify": "^3.7.0"
+    "watchify": "3.7.0"
   }
 }
