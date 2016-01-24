@@ -2,5 +2,6 @@
   "dev": "dev",
   "dist": "www",
   "port": 3000,
-  "host": "localhost"
+  "host": "localhost",
+  "livereload": 35730
 }

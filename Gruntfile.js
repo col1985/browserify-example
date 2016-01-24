@@ -17,9 +17,8 @@ module.exports = function (grunt) {
     connect: {
       options: {
         port: '<%= app.port %>',
-        // Change this to '0.0.0.0' to access the server from outside.
         hostname: '<%= app.host %>',
-        livereload: 35730
+        livereload: '<%= app.livereload %>'
       },
       livereload: {
         options: {
@@ -90,7 +89,59 @@ module.exports = function (grunt) {
           '<%= app.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
       }
-    }
+    },
+
+    dom_munger: {
+      dev: {
+        options: {
+          read: [{
+            selector: 'script[src]',
+            attribute: 'src',
+            writeto: 'jsFiles',
+            isPath: true
+          }, {
+            selector: 'link',
+            attribute: 'href',
+            writeto: 'cssFiles',
+            isPath: true
+          }],
+          remove: ['link', 'script'],
+          append: [{
+            selector: 'head',
+            html: '<link href="bundle.css" rel="stylesheet">'
+          }, {
+            selector: 'body',
+            html: '<script src="bundle.js"></script>'
+          }]
+        },
+        src: './<%= app.dist %>/index.html',
+        dest: './<%= app.dist %>/index.html'
+      }
+    },
+
+    wiredep: {
+      all: {
+        src: [
+          './<%= app.dist %>/index.html'
+        ],
+        dependencies: true,
+        devDependencies: false
+      }
+    },
+
+    cssmin: {
+      // Combine our own CSS files for debug builds
+      dev: {
+        files: {
+          '<%= app.dist %>/bundle.css': '<%= app.dev %>/main.css'
+        }
+      },
+      dist: {
+        files: {
+          '<%= app.dist %>/bundle.min.css': '<%= dom_munger.data.cssFiles %>'
+        }
+      }
+    },
   });
 
   grunt.registerTask('default', ['browserify', 'less', 'watch']);
@@ -103,6 +154,8 @@ module.exports = function (grunt) {
       'connect:livereload',
       'browserify',
       'less',
+      'cssmin:dev',
+      'dom_munger:dev',
       'watch'
     ]);
   });
