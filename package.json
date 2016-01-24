@@ -1,0 +1,20 @@
+{
+  "name": "browserify-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "build-js": "browserify dev/main.js > www/bundle.js",
+    "watch-js": "watchify dev/main.js -o www/bundle.js"
+  },
+  "author": "Colum Bennett",
+  "license": "ISC",
+  "dependencies": {
+    "moment": "^2.11.1",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "browserify": "latest",
+    "watchify": "^3.7.0"
+  }
+}
